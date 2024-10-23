@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Provider</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Add New Provider</h1>
+    <form method="POST" action="/add_provider">
+        <label for="ref_last">Last Name:</label>
+        <input type="text" id="ref_last" name="ref_last" required>
+        <label for="ref_first">First Name:</label>
+        <input type="text" id="ref_first" name="ref_first" required>
+        <label for="ref_mi">Middle Initial:</label>
+        <input type="text" id="ref_mi" name="ref_mi">
+        <label for="ref_title">Title:</label>
+        <input type="text" id="ref_title" name="ref_title">
+        <label for="ref_address">Address:</label>
+        <input type="text" id="ref_address" name="ref_address">
+        <label for="ref_city">City:</label>
+        <input type="text" id="ref_city" name="ref_city">
+        <label for="ref_state">State:</label>
+        <input type="text" id="ref_state" name="ref_state">
+        <label for="ref_zip">Zip:</label>
+        <input type="text" id="ref_zip" name="ref_zip">
+        <label for="ref_clinic">Clinic:</label>
+        <input type="text" id="ref_clinic" name="ref_clinic">
+        <label for="ref_phone">Phone:</label>
+        <input type="text" id="ref_phone" name="ref_phone">
+        <label for="ref_fax">Fax No:</label>
+        <input type="text" id="ref_fax" name="ref_fax">
+        <button type="submit">Add Provider</button>
+    </form>
+
+    {% if message %}
+    <p>{{ message }}</p>
+    {% endif %}
+
+    <a href="/">Back to Find Provider</a>
+</body>
+</html>

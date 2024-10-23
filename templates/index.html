@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Provider</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Find Provider</h1>
+    
+    <form method="POST" action="/">
+        <label for="last_name">Enter Last Name:</label>
+        <input type="text" id="last_name" name="last_name" required>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if provider is not none %}
+        <h2>Provider Details:</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Last Name</th>
+                    <th>First Name</th>
+                    <th>MI</th>
+                    <th>Title</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Zip</th>
+                    <th>Clinic</th>
+                    <th>Phone</th>
+                    <th>Fax No</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for index, row in provider.iterrows() %}
+                <tr>
+                    <td>{{ row['Referring Last'] }}</td>
+                    <td>{{ row['Referring First'] }}</td>
+                    <td>{{ row['Referring MI'] }}</td>
+                    <td>{{ row['Referring Title'] }}</td>
+                    <td>{{ row['Referring Address'] }}</td>
+                    <td>{{ row['Referring City'] }}</td>
+                    <td>{{ row['Referring State'] }}</td>
+                    <td>{{ row['Referring Zip'] }}</td>
+                    <td>{{ row['Referring Clinic'] }}</td>
+                    <td>{{ row['Referring Phone'] }}</td>
+                    <td>{{ row['Referring Fax No'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% elif provider is none and request.method == 'POST' %}
+        <p>No provider found with that last name.</p>
+    {% endif %}
+
+    <a href="/add_provider">Add New Provider</a>
+</body>
+</html>
